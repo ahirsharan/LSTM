@@ -1,5 +1,7 @@
 module lstm_cell(clk, rst, c_in, h_in, X, Wf, Wi, Wc, Wo, bf, bi, bc, bo, c_out, h_out);
 	
+	// X, c_in and h_in are assumed to be of 1x1. Change dimensions accordingly.
+	
 	//Parameters
 	parameter DATA_WIDTH = 16;
 	parameter FRACT_WIDTH = 8;
@@ -23,7 +25,8 @@ module lstm_cell(clk, rst, c_in, h_in, X, Wf, Wi, Wc, Wo, bf, bi, bc, bo, c_out,
 	//h_out : tanh(o_out)
 	output wire [DATA_WIDTH-1:0] c_out, h_out;
 	
-	wire [DATA_WIDTH-1:0] f, i, iw, ct, cw, ot, z1, z2;
+	wire [DATA_WIDTH-1:0] f, i, iw, ct, cw, ot;
+	wire [DATA_WIDTH + FRACT_WIDTH - 1] z1,z2;
 	
 	//f= Wf*{X h_in} + bf
 	ConcatMultAdd A1(X, h_in, Wf, bf, f);
@@ -38,7 +41,7 @@ module lstm_cell(clk, rst, c_in, h_in, X, Wf, Wi, Wc, Wo, bf, bi, bc, bo, c_out,
 	
 	assign z1 = (f*c_in)>>FRACT_WIDTH;
 	assign z2 = (i*ct)>>FRACT_WIDTH;
-	assign c_out = z1 +z2 ;
+	assign c_out = z1[DATA_WIDTH-1:0] + z2[DATA_WIDTH-1:0];
 	
 	//ot=  Wo*{X h_in} + bo
 	ConcatMultAdd A2(X, h_in, Wo, bo, ot);
