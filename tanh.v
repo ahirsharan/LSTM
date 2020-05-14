@@ -6,7 +6,7 @@ module tanh(X,Y);
 	parameter FRACT_WIDTH = 8;
 	
 // define ports
-	input signed [DATA_WIDTH-1:0] X;
+	input [DATA_WIDTH-1:0] X;
 	output wire [DATA_WIDTH-1:0] Y;
 		
 	assign Y = (X[DATA_WIDTH-1]) ? (
