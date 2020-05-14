@@ -21,9 +21,9 @@ module lstm_cell(clk, rst, c_in, h_in, X, Wf, Wi, Wc, Wo, bf, bi, bc, bo, c_out,
 	
 	//c_out : current cell state
 	//h_out : tanh(o_out)
-	output reg [DATA_WIDTH-1:0] c_out, h_out;
+	output wire [DATA_WIDTH-1:0] c_out, h_out;
 	
-	reg [DATA_WIDTH-1:0] f, i, iw, ct, cw, ot;
+	wire [DATA_WIDTH-1:0] f, i, iw, ct, cw, ot, z1, z2;
 	
 	//f= Wf*{X h_in} + bf
 	ConcatMultAdd A1(X, h_in, Wf, bf, f);
@@ -36,8 +36,10 @@ module lstm_cell(clk, rst, c_in, h_in, X, Wf, Wi, Wc, Wo, bf, bi, bc, bo, c_out,
 	ConcatMultAdd A2(X, h_in, Wc, bc, cw);
 	tanh T1(cw, ct);
 	
-	assign c_out = (f*c_in) + (i*ct);
-
+	assign z1 = (f*c_in)>>FRACT_WIDTH;
+	assign z2 = (i*ct)>>FRACT_WIDTH;
+	assign c_out = z1 +z2 ;
+	
 	//ot=  Wo*{X h_in} + bo
 	ConcatMultAdd A2(X, h_in, Wo, bo, ot);
 	
