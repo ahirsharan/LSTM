@@ -6,11 +6,11 @@ module sigmoid(X,Y);
 	output wire [DATA_WIDTH-1:0] Y;
 	
 	wire signed [DATA_WIDTH-1:0] s1;
-	assign s1 = X+16'h0200; // y = x + 2;
+	assign s1 = X+16'h0200; 
 	
 	assign Y = (X[DATA_WIDTH-1]) ? (
 		// negative
-		(X < -16'h0200)? 16'h0000 : (s1>>>2) )  // y = 1/4(x+2) = 1/4x+1/2
+		(X < -16'h0200)? 16'h0000 : (s1>>>2) ) 
 		// positive
 		: ( (X>16'h0200) ? 16'h0100: (s1>>>2) );
 
