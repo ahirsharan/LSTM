@@ -18,6 +18,8 @@ git clone https://github.com/ahirsharan/LSTM.git
 cd LSTM/
 ```
 ## Architecture
+
+### LSTM
 ![text alt](https://i.ibb.co/vJBtzYB/LSTM.png)
 
 
