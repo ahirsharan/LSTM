@@ -1,4 +1,4 @@
-module lstm_cell(clk, rst, c_in, h_in, X, Wf, Wi, Wc, Wo, bf, bi, bc, bo, c_out, h_out);
+module lstm_cell(c_in, h_in, X, Wf, Wi, Wc, Wo, bf, bi, bc, bo, c_out, h_out);
 	
 	// X, c_in and h_in are assumed to be of 1x1. Change dimensions accordingly.
 	
@@ -6,7 +6,7 @@ module lstm_cell(clk, rst, c_in, h_in, X, Wf, Wi, Wc, Wo, bf, bi, bc, bo, c_out,
 	parameter DATA_WIDTH = 16;
 	parameter FRACT_WIDTH = 8;
 	
-	input clk, rst;
+	//input clk, rst;
 	
 	//c_in : previous cell state 
 	//h_in: tanh(o_in)
@@ -26,7 +26,7 @@ module lstm_cell(clk, rst, c_in, h_in, X, Wf, Wi, Wc, Wo, bf, bi, bc, bo, c_out,
 	output wire [DATA_WIDTH-1:0] c_out, h_out;
 	
 	wire [DATA_WIDTH-1:0] f, i, iw, ct, cw, ot;
-	wire [DATA_WIDTH + FRACT_WIDTH - 1] z1,z2;
+	wire [DATA_WIDTH + FRACT_WIDTH - 1:0] z1,z2;
 	
 	//f= Wf*{X h_in} + bf
 	ConcatMultAdd A1(X, h_in, Wf, bf, f);
@@ -47,6 +47,7 @@ module lstm_cell(clk, rst, c_in, h_in, X, Wf, Wi, Wc, Wo, bf, bi, bc, bo, c_out,
 	ConcatMultAdd A2(X, h_in, Wo, bo, ot);
 	
 	//h_out =tanh(ot)
-	tanh T2(ot,h_out)
+	tanh T2(ot,h_out);
+	
 
 endmodule
