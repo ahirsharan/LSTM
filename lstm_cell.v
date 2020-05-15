@@ -32,11 +32,11 @@ module lstm_cell(c_in, h_in, X, Wf, Wi, Wc, Wo, bf, bi, bc, bo, c_out, h_out);
 	ConcatMultAdd A1(X, h_in, Wf, bf, f);
 	
 	//i= sigmoid(Wi*{X h_in} + bi)
-	ConcatMultAdd A1(X, h_in, Wi, bi, iw);
+	ConcatMultAdd A2(X, h_in, Wi, bi, iw);
 	sigmoid S1(iw, i);
 	
 	//ct= tanh(Wc*{X h_in} + bc)
-	ConcatMultAdd A2(X, h_in, Wc, bc, cw);
+	ConcatMultAdd A3(X, h_in, Wc, bc, cw);
 	tanh T1(cw, ct);
 	
 	assign z1 = (f*c_in)>>FRACT_WIDTH;
@@ -44,7 +44,7 @@ module lstm_cell(c_in, h_in, X, Wf, Wi, Wc, Wo, bf, bi, bc, bo, c_out, h_out);
 	assign c_out = z1[DATA_WIDTH-1:0] + z2[DATA_WIDTH-1:0];
 	
 	//ot=  Wo*{X h_in} + bo
-	ConcatMultAdd A2(X, h_in, Wo, bo, ot);
+	ConcatMultAdd A4(X, h_in, Wo, bo, ot);
 	
 	//h_out =tanh(ot)
 	tanh T2(ot,h_out);
