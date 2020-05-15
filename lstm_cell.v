@@ -16,10 +16,10 @@ module lstm_cell(c_in, h_in, X, Wf, Wi, Wc, Wo, bf, bi, bc, bo, c_out, h_out);
 	input [DATA_WIDTH-1:0] X;
 	
 	//Weight arrays : {Wf, Wi ,Wc, Wo} where each element will be of size 2 x 1
-	input [DATA_WIDTH-1:0] Wf[2], Wi[2], Wc[2], Wo[2];
+	input wire [DATA_WIDTH-1:0] Wf[2], Wi[2], Wc[2], Wo[2];
 	
 	//Bias arrays : {bf, bi ,bc, bo} where each element will be of size 1 x 1
-	input [DATA_WIDTH-1:0] bf, bi, bc ,bo;
+	input wire [DATA_WIDTH-1:0] bf, bi, bc ,bo;
 	
 	//c_out : current cell state
 	//h_out : tanh(o_out)
