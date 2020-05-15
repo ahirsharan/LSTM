@@ -5,7 +5,7 @@ module ConcatMultAdd(X, h_in, W, b, out);
 	parameter FRACT_WIDTH = 8;
 	
 	input [DATA_WIDTH-1:0] X,h_in,b;
-	input [DATA_WIDTH-1:0] W[2];
+	input wire [DATA_WIDTH-1:0] W[2];
 	output wire [DATA_WIDTH-1:0] out;
 
 	// internal regs/wires
