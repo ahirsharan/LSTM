@@ -34,12 +34,12 @@ module lstm_cell(c_in, h_in, X, c_out, h_out);
 	assign Wc1=16'h0001;
 	
 	assign Wo0=16'h0001;
-   assign Wo1=16'h0001;
+        assign Wo1=16'h0001;
 	
 	assign bf=16'h0001;
 	assign bi=16'h0001;	
 	assign bc=16'h0001;
-   assign bo=16'h0001;
+        assign bo=16'h0001;
 
 	//c_out : current cell state
 	//h_out : tanh(o_out)
