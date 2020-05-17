@@ -27,30 +27,32 @@ module Test;
 		X = 0;
 
 		// Wait 100 ns for global reset to finish
-               #200;
-		X=-16'h0010;
-		c_in=-16'h0100;
-		h_in=16'h0001;
+		// Take not too large inputs such that they don't overflow and give proper results after right shift
+		
+                #200;
+		X=-16'h0080;       // X = -0.5
+		c_in=-16'h0100;    // c_in = -1
+		h_in=16'h0280;     // h_in = 2.5
 
 		$monitor("Cell State: %d, Output (After Activation):%d ",c_out,h_out);
 		
 		#200;
      		X=16'h0110;
 		c_in=16'h0110;
-		h_in=16'h0011;
+		h_in=16'h0211;
 
 		$monitor("Cell State: %d, Output (After Activation):%d ",c_out,h_out);
 		
 		#200;
 	 	X=-16'h0110;
-		c_in=16'h0110;
+		c_in=16'h0120;
 		h_in=16'h0011;
 
 		$monitor("Cell State: %d, Output (After Activation):%d ",c_out,h_out);
 		
 		#200;
       		X=16'h0110;
-		c_in=16'h0110;
+		c_in=16'h0210;
 		h_in=-16'h0011;
 
 		$monitor("Cell State: %d, Output (After Activation):%d ",c_out,h_out);
