@@ -10,9 +10,9 @@ module lstm_cell(c_in, h_in, X, c_out, h_out);
 	
 	//c_in : previous cell state 
 	//h_in: tanh(o_in)
-	input [DATA_WIDTH-1:0] c_in , h_in ;
+	input signed [DATA_WIDTH-1:0] c_in , h_in ;
 	
-   //X: current input
+        //X: current input
 	input signed [DATA_WIDTH-1:0] X;
 	
 	//Weight arrays : {Wf, Wi ,Wc, Wo} where each element will be of size 2 x 1
