@@ -61,7 +61,7 @@ module lstm_cell(c_in, h_in, X, c_out, h_out);
 	
 	assign z1 = (f*c_in)>>>FRACT_WIDTH;
 	assign z2 = (i*ct)>>>FRACT_WIDTH;
-	assign c_out = z1[DATA_WIDTH-1:0] + z2[DATA_WIDTH-1:0];
+	assign c_out = z1 + z2;
 	
 	//out=  sigmoid(Wo*{X h_in} + bo)
 	ConcatMultAdd A4(X, h_in, Wo0, Wo1, bo, ot);
