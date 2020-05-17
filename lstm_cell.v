@@ -46,7 +46,7 @@ module lstm_cell(c_in, h_in, X, c_out, h_out);
 	output wire signed [DATA_WIDTH-1:0] c_out, h_out;
 	
 	wire signed [DATA_WIDTH-1:0] f, i, iw, ct, cw, ot, out, c_act;
-	wire signed [DATA_WIDTH + FRACT_WIDTH - 1:0] z1, z2;
+	wire signed [DATA_WIDTH + FRACT_WIDTH - 1:0] z1, z2, z3;
 	
 	//f= Wf*{X h_in} + bf
 	ConcatMultAdd A1(X, h_in, Wf0, Wf1, bf, f);
@@ -69,6 +69,7 @@ module lstm_cell(c_in, h_in, X, c_out, h_out);
 	
 	//h_out =(out*tanh(c_out))
 	tanh T2(c_out,c_act);
-	assign h_out = (out*c_act)>>>FRACT_WIDTH;
+	assign z3 = (out*c_act)>>>FRACT_WIDTH;
+	assign h_out = z3;
 	
 endmodule
