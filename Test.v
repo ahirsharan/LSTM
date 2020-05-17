@@ -27,29 +27,29 @@ module Test;
 		X = 0;
 
 		// Wait 100 ns for global reset to finish
-      #200;
-      X=-16'h0010;
+               #200;
+		X=-16'h0010;
 		c_in=-16'h0100;
 		h_in=16'h0001;
 
 		$monitor("Cell State: %d, Output (After Activation):%d ",c_out,h_out);
 		
 		#200;
-      X=16'h0110;
+     		 X=16'h0110;
 		c_in=16'h0110;
 		h_in=16'h0011;
 
 		$monitor("Cell State: %d, Output (After Activation):%d ",c_out,h_out);
 		
 		#200;
-      X=-16'h0110;
+	 	X=-16'h0110;
 		c_in=16'h0110;
 		h_in=16'h0011;
 
 		$monitor("Cell State: %d, Output (After Activation):%d ",c_out,h_out);
 		
 		#200;
-      X=16'h0110;
+      		X=16'h0110;
 		c_in=16'h0110;
 		h_in=-16'h0011;
 
