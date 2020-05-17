@@ -36,6 +36,8 @@ cd LSTM/
 |
 ├── ConcatMultAdd.v  # Concat and mutiply weights and add bias
 |
+├── Test.v           # Test Bench for LSTM Cell
+|
 ```
 
 ## Acknowledgement
