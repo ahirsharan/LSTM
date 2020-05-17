@@ -1,5 +1,5 @@
 module ConcatMultAdd(X, h_in, W0, W1, b, out);	
-	// Concatenates 
+	// Concatenates and Adds
 	// incoming data signed and fixed width
 	parameter DATA_WIDTH = 16;
 	parameter FRACT_WIDTH = 8;
