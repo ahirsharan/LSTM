@@ -24,22 +24,22 @@ module lstm_cell(c_in, h_in, X, c_out, h_out);
 	//Assign weights and biases
 	//Random values assigned
 	
-	assign Wf0=16'h0001;
-	assign Wf1=16'h0001;
+	assign Wf0=16'h0101;
+	assign Wf1=16'h0101;
 	
-	assign Wi0=16'h0001;
-	assign Wi1=16'h0001;
+	assign Wi0=16'h0101;
+	assign Wi1=16'h0101;
 	
-	assign Wc0=16'h0001;
-	assign Wc1=16'h0001;
+	assign Wc0=16'h0101;
+	assign Wc1=16'h0101;
 	
-	assign Wo0=16'h0001;
-        assign Wo1=16'h0001;
+	assign Wo0=16'h0101;
+        assign Wo1=16'h0101;
 	
-	assign bf=16'h0001;
-	assign bi=16'h0001;	
-	assign bc=16'h0001;
-        assign bo=16'h0001;
+	assign bf=16'h0101;
+	assign bi=16'h0101;	
+	assign bc=16'h0101;
+        assign bo=16'h0101;
 
 	//c_out : current cell state
 	//h_out : tanh(o_out)
