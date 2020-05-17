@@ -35,7 +35,7 @@ module Test;
 		$monitor("Cell State: %d, Output (After Activation):%d ",c_out,h_out);
 		
 		#200;
-     		 X=16'h0110;
+     		X=16'h0110;
 		c_in=16'h0110;
 		h_in=16'h0011;
 
