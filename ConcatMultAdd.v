@@ -14,6 +14,6 @@ module ConcatMultAdd(X, h_in, W0, W1, b, out);
 	// behavior: out = W*{x,h_in} + b where W={W0,W1}
 	assign p1 = (W0*X)>>>FRACT_WIDTH; 
 	assign p2 = (W1*h_in)>>>FRACT_WIDTH;
-	assign out = p1[DATA_WIDTH-1:0] + p2[DATA_WIDTH-1:0]+ b;
+	assign out = p1 + p2 + b;
 
 endmodule
