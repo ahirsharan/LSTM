@@ -6,10 +6,10 @@ module ConcatMultAdd(X, h_in, W0, W1, b, out);
 	
 	input signed [DATA_WIDTH-1:0] X, h_in;
 	input signed [DATA_WIDTH-1:0] W0, W1, b;
-	output[DATA_WIDTH-1:0] out;
+	output signed [DATA_WIDTH-1:0] out;
 
 	// internal regs/wires
-	wire [DATA_WIDTH+FRACT_WIDTH-1:0] p1,p2;
+	wire signed [DATA_WIDTH+FRACT_WIDTH-1:0] p1,p2;
 	
 	// behavior: out = W*{x,h_in} + b where W={W0,W1}
 	assign p1 = (W0*X)>>>FRACT_WIDTH; 
