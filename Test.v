@@ -28,6 +28,9 @@ module Test;
 
 		// Wait 100 ns for global reset to finish
 		// Take not too large inputs such that they don't overflow and give proper results after right shift
+		// Preferably, take inputs <4 && >-4
+		// First 8 bits are integeral part and last 8 bits are fractional
+		// All Numbers are signed 
 		
                 #200;
 		X=-16'h0080;       // X = -0.5
