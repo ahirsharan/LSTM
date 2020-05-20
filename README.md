@@ -37,6 +37,7 @@ cd LSTM/
 |
 ├── Test.v           # Test Bench for LSTM Cell
 |
+.
 ```
 
 ## Acknowledgement
